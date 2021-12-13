@@ -144,6 +144,7 @@ public:
         cin >> n;
         cin.ignore();
         for (int i = 0; i < n; i++) {
+            cout<<"Sinh vien thu "<<"["<<i+1<<"]:"<<endl;
             cout << "Nhap ma sinh vien: ";
             getline(cin, id);
             cout << "Nhap ten: ";
