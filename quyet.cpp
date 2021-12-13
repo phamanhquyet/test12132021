@@ -144,17 +144,20 @@ public:
         cin >> n;
         cin.ignore();
         for (int i = 0; i < n; i++) {
-            cout<<"Sinh vien thu "<<"["<<i+1<<"]:"<<endl;
             cout << "Nhap ma sinh vien: ";
             getline(cin, id);
             cout << "Nhap ten: ";
             getline(cin, fullName);
+            handle_string(fullName);
             cout << "Nhap dia chi: ";
             getline(cin, address);
+            handle_string(address);
             cout << "Nhap chuyen nganh: ";
             getline(cin, specialize);
+            handle_string(specialize);
             cout << "Nhap lop: ";
             getline(cin, class_name);
+            handle_string(class_name);
             cout << "So dien thoai: ";
             getline(cin, phoneNumber);
             Student st(id, fullName, address,specialize, class_name, phoneNumber);
@@ -174,6 +177,49 @@ public:
                 << "," << listStudent.at(i).getPhoneNumber() << endl;
         }
         fo.close();
+    }
+    void handle_string(string& str) {
+        while (str[0] == ' ')
+        {
+            str.erase(str.begin() + 0);
+        }
+        while (str[str.length() - 1] == ' ')
+        {
+            str.erase(str.begin() + str.length() - 1);
+        }
+        for (int i = 0; i < str.length(); i++)
+        {
+
+            if (str[i] == ' ' && str[i + 1] == ' ')
+            {
+                str.erase(str.begin() + i);
+                i--;
+            }
+        }
+        for (int i = 0; i < str.length(); i++) {
+            //65 90
+            if (str[i] >= 65 && str[i] <= 90)
+                str[i] += 32;
+        }
+        if (str[0] != ' ')
+        {
+            if (str[0] >= 97 && str[0] <= 122)
+            {
+                str[0] -= 32;
+            }
+
+        }
+        for (int i = 0; i < str.length() - 1; i++)
+        {
+            if (str[i] == ' ' && str[i + 1] != ' ')
+            {
+
+                if (str[i + 1] >= 97 && str[i + 1] <= 122)
+                {
+                    str[i + 1] -= 32;
+                }
+            }
+        }
     }
     void display() {
         cout << setw(100) << "List of employees are working at Quyet Vjp Pro's Cafe" << endl;
@@ -256,10 +302,13 @@ public:
         if (pos > -1) {
             cout << "Enter name you want to edit to: ";
             getline(cin, nameOfStudentWantToEdit);
+            handle_string(nameOfStudentWantToEdit);
             cout << "Enter address you want to edit to: ";
             getline(cin, addressWantToEdit);
+            handle_string(addressWantToEdit);
             cout << "Enter specialize you want to edit to: ";
             getline(cin, specializeOfStudentWantToEdit);
+            handle_string(specializeOfStudentWantToEdit);
             cout << "Enter class name you want to edit to: ";
             getline(cin, classNameOfStudentWantToEdit);
             cout << "Enter phone number you want to edit to: ";
