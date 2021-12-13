@@ -1,0 +1,5 @@
+1,12,1,23,23,23
+2,quyet,2,quyet,quyet,quyet
+3,quyet,quyet,quyet,quyet,quyet
+4,1,1,1,1,1
+rer,re,re,re,re,re
